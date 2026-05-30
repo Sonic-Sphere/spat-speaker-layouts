@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SPEAKER_SETUP VERSION="3.3.7" SPAT_MODE="Dome" DIFFUSION="0.0" GENERAL_MUTE="0">
+  <!-- Stereo 2.0 -->
+  <!-- Coordinates: +x right, +y front, +z up; negative azimuth is listener-left. -->
+  <!-- Basis: Dolby/ITU front stereo pair nominally at +/-30 degrees from center. -->
+  <SPEAKER_1 STATE="normal" GAIN="0.0" DIRECT_OUT_ONLY="0">
+    <!-- L: az=-30, el=0 -->
+    <POSITION X="-0.5000000000" Y="0.8660254038" Z="0.0000000000" />
+  </SPEAKER_1>
+  <SPEAKER_2 STATE="normal" GAIN="0.0" DIRECT_OUT_ONLY="0">
+    <!-- R: az=30, el=0 -->
+    <POSITION X="0.5000000000" Y="0.8660254038" Z="0.0000000000" />
+  </SPEAKER_2>
+</SPEAKER_SETUP>
