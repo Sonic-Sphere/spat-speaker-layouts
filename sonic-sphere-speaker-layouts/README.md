@@ -5,7 +5,7 @@ These XML files were imported from:
 `/Users/jeremyguillory/Documents/vibecode projects/All projects assets`
 
 They are preserved source layouts, not generated Dolby-reference layouts. The
-generated reference set remains in `speaker_setups/`.
+generated reference set remains in `dolby-multichannel-and-other-speaker-layouts/`.
 
 ## Included Files
 

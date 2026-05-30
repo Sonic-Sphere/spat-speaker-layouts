@@ -15,7 +15,7 @@ from pathlib import Path
 # repo, write the pack at the repo root.
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "presets" / "dolby_reference_layouts" if (ROOT / "presets").exists() else ROOT
-SPEAKER_SETUP_DIR = OUTPUT_DIR / "speaker_setups"
+SPEAKER_SETUP_DIR = OUTPUT_DIR / "dolby-multichannel-and-other-speaker-layouts"
 GEOMETRY_CSV = OUTPUT_DIR / "layout_geometry.csv"
 README = OUTPUT_DIR / "README.md"
 GENERATOR_COPY = OUTPUT_DIR / "scripts" / Path(__file__).name
@@ -333,8 +333,8 @@ master files.
 
 ## What Is Here
 
-- `speaker_setups/`: SpatGRIS speaker setup XML files.
-- `source_layouts/`: imported Fey/Fëy and Loveburn source XML speaker setups.
+- `dolby-multichannel-and-other-speaker-layouts/`: SpatGRIS speaker setup XML files.
+- `sonic-sphere-speaker-layouts/`: imported Fey/Fëy and Loveburn source XML speaker setups.
 - `layout_geometry.csv`: the same layout data as a flat table.
 - `scripts/generate_reference_spatgris_layouts.py`: the generator used to build
   the XML and CSV files.
@@ -359,11 +359,11 @@ as XML files like the ones in this repo.
 
 1. Open SpatGRIS.
 2. Open the speaker setup editor or speaker setup load dialog.
-3. Load one of the XML files from `speaker_setups/`.
+3. Load one of the XML files from `dolby-multichannel-and-other-speaker-layouts/`.
 4. Use the file as a reference layout, visualization target, or geometry source
    for downstream renderers such as Sonic Sphere/Orbisonic tooling.
 
-The `source_layouts/` files are preserved source assets rather than generated
+The `sonic-sphere-speaker-layouts/` files are preserved source assets rather than generated
 Dolby-reference layouts. Use them when you need the original Fey/Fëy or Loveburn
 speaker geometry.
 
@@ -415,11 +415,11 @@ with the revised titles already used there.
 
 | Layout | XML Speakers | Direct-Out Channels | File |
 | --- | ---: | ---: | --- |
-| Fey/Fëy without LFE | 30 | 0 | `source_layouts/fey/SPAT Fey speaker setup - without LFE.xml` |
-| Fey/Fëy with LFE channel | 31 | 1 | `source_layouts/fey/SPAT Fey speaker setup - with LFE channel.xml` |
-| Loveburn speaker setup | 54 | 2 | `source_layouts/loveburn/Loveburn speaker setup.xml` |
+| Fey/Fëy without LFE | 30 | 0 | `sonic-sphere-speaker-layouts/fey/SPAT Fey speaker setup - without LFE.xml` |
+| Fey/Fëy with LFE channel | 31 | 1 | `sonic-sphere-speaker-layouts/fey/SPAT Fey speaker setup - with LFE channel.xml` |
+| Loveburn speaker setup | 54 | 2 | `sonic-sphere-speaker-layouts/loveburn/Loveburn speaker setup.xml` |
 
-See `source_layouts/README.md` for the import notes.
+See `sonic-sphere-speaker-layouts/README.md` for the import notes.
 
 ## Notes
 

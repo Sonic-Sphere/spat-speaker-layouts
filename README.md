@@ -9,8 +9,8 @@ master files.
 
 ## What Is Here
 
-- `speaker_setups/`: SpatGRIS speaker setup XML files.
-- `source_layouts/`: imported Fey/Fëy and Loveburn source XML speaker setups.
+- `dolby-multichannel-and-other-speaker-layouts/`: SpatGRIS speaker setup XML files.
+- `sonic-sphere-speaker-layouts/`: imported Fey/Fëy and Loveburn source XML speaker setups.
 - `layout_geometry.csv`: the same layout data as a flat table.
 - `scripts/generate_reference_spatgris_layouts.py`: the generator used to build
   the XML and CSV files.
@@ -35,11 +35,11 @@ as XML files like the ones in this repo.
 
 1. Open SpatGRIS.
 2. Open the speaker setup editor or speaker setup load dialog.
-3. Load one of the XML files from `speaker_setups/`.
+3. Load one of the XML files from `dolby-multichannel-and-other-speaker-layouts/`.
 4. Use the file as a reference layout, visualization target, or geometry source
    for downstream renderers such as Sonic Sphere/Orbisonic tooling.
 
-The `source_layouts/` files are preserved source assets rather than generated
+The `sonic-sphere-speaker-layouts/` files are preserved source assets rather than generated
 Dolby-reference layouts. Use them when you need the original Fey/Fëy or Loveburn
 speaker geometry.
 
@@ -82,19 +82,19 @@ families, LFE direct-out handling, and the `SPEAKER_N` XML format.
 
 | Layout | XML Speakers | File | Basis |
 | --- | ---: | --- | --- |
-| Mono 1.0 | 1 | `speaker_setups/mono_1_0_spatgris_speaker_setup.xml` | Center-front mono reference. |
-| Stereo 2.0 | 2 | `speaker_setups/stereo_2_0_spatgris_speaker_setup.xml` | Dolby/ITU front stereo pair nominally at +/-30 degrees from center. |
-| Binaural 2.0 Narrow | 2 | `speaker_setups/binaural_2_0_narrow_spatgris_speaker_setup.xml` | Utility narrow stereo reference from the local workplan; not a Dolby room-speaker standard. |
-| Quad 4.0 | 4 | `speaker_setups/quad_4_0_spatgris_speaker_setup.xml` | Symmetric quad reference layout. |
-| 5.1 | 6 | `speaker_setups/5_1_spatgris_speaker_setup.xml` | Dolby/ITU 5.1 basis: L/R +/-30 degrees, surround pair about +/-110 degrees, LFE direct. |
-| 5.1.2 | 8 | `speaker_setups/5_1_2_spatgris_speaker_setup.xml` | Dolby 5.1.2 overhead basis: 5.1 bed plus left/right top-middle overhead pair. |
-| 5.1.4 | 10 | `speaker_setups/5_1_4_spatgris_speaker_setup.xml` | Dolby 5.1.4 overhead basis: 5.1 bed plus top-front and top-rear pairs. |
-| 7.1 | 8 | `speaker_setups/7_1_spatgris_speaker_setup.xml` | Dolby/ITU 7.1 basis: side surrounds at +/-90 degrees and rear surrounds at +/-135 degrees. |
-| 7.1.2 | 10 | `speaker_setups/7_1_2_spatgris_speaker_setup.xml` | Dolby 7.1.2 overhead basis: 7.1 bed plus left/right top-middle overhead pair. |
-| 7.1.4 | 12 | `speaker_setups/7_1_4_spatgris_speaker_setup.xml` | Dolby 7.1.4 reference basis: 7.1 bed plus top-front and top-rear overhead pairs. |
-| 9.1.4 | 14 | `speaker_setups/9_1_4_spatgris_speaker_setup.xml` | Dolby 9.1.4 basis: 7.1.4 plus left/right wide speakers. |
-| 9.1.6 | 16 | `speaker_setups/9_1_6_spatgris_speaker_setup.xml` | Dolby 9.1.6 basis: 9.1.4 plus left/right top-middle overhead pair. |
-| Harmony Bloom 8ch | 8 | `speaker_setups/harmony_bloom_8ch_spatgris_speaker_setup.xml` | Music-production circular utility layout from the local workplan; not a Dolby room-speaker standard. |
+| Mono 1.0 | 1 | `dolby-multichannel-and-other-speaker-layouts/mono_1_0_spatgris_speaker_setup.xml` | Center-front mono reference. |
+| Stereo 2.0 | 2 | `dolby-multichannel-and-other-speaker-layouts/stereo_2_0_spatgris_speaker_setup.xml` | Dolby/ITU front stereo pair nominally at +/-30 degrees from center. |
+| Binaural 2.0 Narrow | 2 | `dolby-multichannel-and-other-speaker-layouts/binaural_2_0_narrow_spatgris_speaker_setup.xml` | Utility narrow stereo reference from the local workplan; not a Dolby room-speaker standard. |
+| Quad 4.0 | 4 | `dolby-multichannel-and-other-speaker-layouts/quad_4_0_spatgris_speaker_setup.xml` | Symmetric quad reference layout. |
+| 5.1 | 6 | `dolby-multichannel-and-other-speaker-layouts/5_1_spatgris_speaker_setup.xml` | Dolby/ITU 5.1 basis: L/R +/-30 degrees, surround pair about +/-110 degrees, LFE direct. |
+| 5.1.2 | 8 | `dolby-multichannel-and-other-speaker-layouts/5_1_2_spatgris_speaker_setup.xml` | Dolby 5.1.2 overhead basis: 5.1 bed plus left/right top-middle overhead pair. |
+| 5.1.4 | 10 | `dolby-multichannel-and-other-speaker-layouts/5_1_4_spatgris_speaker_setup.xml` | Dolby 5.1.4 overhead basis: 5.1 bed plus top-front and top-rear pairs. |
+| 7.1 | 8 | `dolby-multichannel-and-other-speaker-layouts/7_1_spatgris_speaker_setup.xml` | Dolby/ITU 7.1 basis: side surrounds at +/-90 degrees and rear surrounds at +/-135 degrees. |
+| 7.1.2 | 10 | `dolby-multichannel-and-other-speaker-layouts/7_1_2_spatgris_speaker_setup.xml` | Dolby 7.1.2 overhead basis: 7.1 bed plus left/right top-middle overhead pair. |
+| 7.1.4 | 12 | `dolby-multichannel-and-other-speaker-layouts/7_1_4_spatgris_speaker_setup.xml` | Dolby 7.1.4 reference basis: 7.1 bed plus top-front and top-rear overhead pairs. |
+| 9.1.4 | 14 | `dolby-multichannel-and-other-speaker-layouts/9_1_4_spatgris_speaker_setup.xml` | Dolby 9.1.4 basis: 7.1.4 plus left/right wide speakers. |
+| 9.1.6 | 16 | `dolby-multichannel-and-other-speaker-layouts/9_1_6_spatgris_speaker_setup.xml` | Dolby 9.1.6 basis: 9.1.4 plus left/right top-middle overhead pair. |
+| Harmony Bloom 8ch | 8 | `dolby-multichannel-and-other-speaker-layouts/harmony_bloom_8ch_spatgris_speaker_setup.xml` | Music-production circular utility layout from the local workplan; not a Dolby room-speaker standard. |
 
 ## Imported Source Layouts
 
@@ -103,11 +103,11 @@ with the revised titles already used there.
 
 | Layout | XML Speakers | Direct-Out Channels | File |
 | --- | ---: | ---: | --- |
-| Fey/Fëy without LFE | 30 | 0 | `source_layouts/fey/SPAT Fey speaker setup - without LFE.xml` |
-| Fey/Fëy with LFE channel | 31 | 1 | `source_layouts/fey/SPAT Fey speaker setup - with LFE channel.xml` |
-| Loveburn speaker setup | 54 | 2 | `source_layouts/loveburn/Loveburn speaker setup.xml` |
+| Fey/Fëy without LFE | 30 | 0 | `sonic-sphere-speaker-layouts/fey/SPAT Fey speaker setup - without LFE.xml` |
+| Fey/Fëy with LFE channel | 31 | 1 | `sonic-sphere-speaker-layouts/fey/SPAT Fey speaker setup - with LFE channel.xml` |
+| Loveburn speaker setup | 54 | 2 | `sonic-sphere-speaker-layouts/loveburn/Loveburn speaker setup.xml` |
 
-See `source_layouts/README.md` for the import notes.
+See `sonic-sphere-speaker-layouts/README.md` for the import notes.
 
 ## Notes
 
