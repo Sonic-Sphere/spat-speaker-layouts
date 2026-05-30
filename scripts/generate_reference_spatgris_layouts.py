@@ -120,24 +120,7 @@ def front_wide(start_patch: int) -> tuple[Speaker, Speaker]:
     )
 
 
-def sonic_sphere_30_1() -> tuple[Speaker, ...]:
-    speakers: list[Speaker] = [Speaker(1, "Z", 0.0, 90.0)]
-    speakers += [Speaker(2 + i, f"U{i + 1}", az, 45.0) for i, az in enumerate((0, 72, 144, -144, -72))]
-    speakers += [Speaker(7 + i, f"E{i + 1}", az, 0.0) for i, az in enumerate((0, 36, 72, 108, 144, 180, -144, -108, -72, -36))]
-    speakers += [Speaker(17 + i, f"L{i + 1}", az, -45.0) for i, az in enumerate((18, 54, 90, 126, 162, -162, -126, -90, -54, -18))]
-    speakers += [Speaker(27 + i, f"N{i + 1}", az, -80.0) for i, az in enumerate((45, 135, -135, -45))]
-    speakers.append(Speaker(31, "LFE", -45.0, 0.0, True, "direct out only"))
-    return tuple(speakers)
-
-
 LAYOUTS: tuple[Layout, ...] = (
-    Layout(
-        "sonic_sphere_30_1",
-        "Sonic Sphere 30.1",
-        sonic_sphere_30_1(),
-        "Project-specific Sonic Sphere geometry from spatgris_layout_workplan.md; LFE is direct-out-only.",
-        "This is the physical target sphere, not a Dolby consumer playback layout.",
-    ),
     Layout(
         "mono_1_0",
         "Mono 1.0",
@@ -342,7 +325,7 @@ def write_readme(paths: list[Path]) -> None:
     content = f"""# Sonic Sphere SPAT Speaker Layouts
 
 Reference SpatGRIS speaker setup XML files for common multichannel and Dolby
-Atmos-style layouts, plus the Sonic Sphere 30.1 physical target layout.
+Atmos-style layouts.
 
 These files are intended as geometry/reference assets. They are speaker setup
 XMLs, not `.spatgris` projects, audio files, render kernels, or Dolby Atmos
@@ -351,6 +334,7 @@ master files.
 ## What Is Here
 
 - `speaker_setups/`: SpatGRIS speaker setup XML files.
+- `source_layouts/`: imported Fey/Fëy and Loveburn source XML speaker setups.
 - `layout_geometry.csv`: the same layout data as a flat table.
 - `scripts/generate_reference_spatgris_layouts.py`: the generator used to build
   the XML and CSV files.
@@ -379,12 +363,16 @@ as XML files like the ones in this repo.
 4. Use the file as a reference layout, visualization target, or geometry source
    for downstream renderers such as Sonic Sphere/Orbisonic tooling.
 
+The `source_layouts/` files are preserved source assets rather than generated
+Dolby-reference layouts. Use them when you need the original Fey/Fëy or Loveburn
+speaker geometry.
+
 For programmatic use, prefer `layout_geometry.csv`. It includes the layout name,
 patch number, channel label, azimuth, elevation, Cartesian position, and LFE
 direct-out flag for every speaker.
 
-LFE handling: layouts with `.1` channels include an LFE entry at patch 4, marked
-direct-out-only. The Sonic Sphere 30.1 physical target uses patch 31 for LFE.
+LFE handling: generated layouts with `.1` channels include an LFE entry at patch
+4, marked direct-out-only.
 
 ## Coordinate Convention
 
@@ -420,12 +408,23 @@ families, LFE direct-out handling, and the `SPEAKER_N` XML format.
 | --- | ---: | --- | --- |
 {chr(10).join(table_rows)}
 
+## Imported Source Layouts
+
+These were imported from the local `All projects assets` folder and preserved
+with the revised titles already used there.
+
+| Layout | XML Speakers | Direct-Out Channels | File |
+| --- | ---: | ---: | --- |
+| Fey/Fëy without LFE | 30 | 0 | `source_layouts/fey/SPAT Fey speaker setup - without LFE.xml` |
+| Fey/Fëy with LFE channel | 31 | 1 | `source_layouts/fey/SPAT Fey speaker setup - with LFE channel.xml` |
+| Loveburn speaker setup | 54 | 2 | `source_layouts/loveburn/Loveburn speaker setup.xml` |
+
+See `source_layouts/README.md` for the import notes.
+
 ## Notes
 
 - `Binaural 2.0 Narrow` and `Harmony Bloom 8ch` are utility/music-production
   layouts, not Dolby room-speaker standards.
-- `Sonic Sphere 30.1` is the physical target sphere layout, not a consumer
-  Dolby playback room layout.
 - The generated XML files include comments naming the logical channel at each
   patch number.
 """

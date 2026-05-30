@@ -1,7 +1,7 @@
 # Sonic Sphere SPAT Speaker Layouts
 
 Reference SpatGRIS speaker setup XML files for common multichannel and Dolby
-Atmos-style layouts, plus the Sonic Sphere 30.1 physical target layout.
+Atmos-style layouts.
 
 These files are intended as geometry/reference assets. They are speaker setup
 XMLs, not `.spatgris` projects, audio files, render kernels, or Dolby Atmos
@@ -10,6 +10,7 @@ master files.
 ## What Is Here
 
 - `speaker_setups/`: SpatGRIS speaker setup XML files.
+- `source_layouts/`: imported Fey/Fëy and Loveburn source XML speaker setups.
 - `layout_geometry.csv`: the same layout data as a flat table.
 - `scripts/generate_reference_spatgris_layouts.py`: the generator used to build
   the XML and CSV files.
@@ -38,12 +39,16 @@ as XML files like the ones in this repo.
 4. Use the file as a reference layout, visualization target, or geometry source
    for downstream renderers such as Sonic Sphere/Orbisonic tooling.
 
+The `source_layouts/` files are preserved source assets rather than generated
+Dolby-reference layouts. Use them when you need the original Fey/Fëy or Loveburn
+speaker geometry.
+
 For programmatic use, prefer `layout_geometry.csv`. It includes the layout name,
 patch number, channel label, azimuth, elevation, Cartesian position, and LFE
 direct-out flag for every speaker.
 
-LFE handling: layouts with `.1` channels include an LFE entry at patch 4, marked
-direct-out-only. The Sonic Sphere 30.1 physical target uses patch 31 for LFE.
+LFE handling: generated layouts with `.1` channels include an LFE entry at patch
+4, marked direct-out-only.
 
 ## Coordinate Convention
 
@@ -77,7 +82,6 @@ families, LFE direct-out handling, and the `SPEAKER_N` XML format.
 
 | Layout | XML Speakers | File | Basis |
 | --- | ---: | --- | --- |
-| Sonic Sphere 30.1 | 31 | `speaker_setups/sonic_sphere_30_1_spatgris_speaker_setup.xml` | Project-specific Sonic Sphere geometry from spatgris_layout_workplan.md; LFE is direct-out-only. |
 | Mono 1.0 | 1 | `speaker_setups/mono_1_0_spatgris_speaker_setup.xml` | Center-front mono reference. |
 | Stereo 2.0 | 2 | `speaker_setups/stereo_2_0_spatgris_speaker_setup.xml` | Dolby/ITU front stereo pair nominally at +/-30 degrees from center. |
 | Binaural 2.0 Narrow | 2 | `speaker_setups/binaural_2_0_narrow_spatgris_speaker_setup.xml` | Utility narrow stereo reference from the local workplan; not a Dolby room-speaker standard. |
@@ -92,11 +96,22 @@ families, LFE direct-out handling, and the `SPEAKER_N` XML format.
 | 9.1.6 | 16 | `speaker_setups/9_1_6_spatgris_speaker_setup.xml` | Dolby 9.1.6 basis: 9.1.4 plus left/right top-middle overhead pair. |
 | Harmony Bloom 8ch | 8 | `speaker_setups/harmony_bloom_8ch_spatgris_speaker_setup.xml` | Music-production circular utility layout from the local workplan; not a Dolby room-speaker standard. |
 
+## Imported Source Layouts
+
+These were imported from the local `All projects assets` folder and preserved
+with the revised titles already used there.
+
+| Layout | XML Speakers | Direct-Out Channels | File |
+| --- | ---: | ---: | --- |
+| Fey/Fëy without LFE | 30 | 0 | `source_layouts/fey/SPAT Fey speaker setup - without LFE.xml` |
+| Fey/Fëy with LFE channel | 31 | 1 | `source_layouts/fey/SPAT Fey speaker setup - with LFE channel.xml` |
+| Loveburn speaker setup | 54 | 2 | `source_layouts/loveburn/Loveburn speaker setup.xml` |
+
+See `source_layouts/README.md` for the import notes.
+
 ## Notes
 
 - `Binaural 2.0 Narrow` and `Harmony Bloom 8ch` are utility/music-production
   layouts, not Dolby room-speaker standards.
-- `Sonic Sphere 30.1` is the physical target sphere layout, not a consumer
-  Dolby playback room layout.
 - The generated XML files include comments naming the logical channel at each
   patch number.
