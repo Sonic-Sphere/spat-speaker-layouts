@@ -1,10 +1,10 @@
 # Sonic Sphere SPAT Speaker Layouts
 
-Reference SpatGRIS speaker setup XML files for common multichannel and Dolby
-Atmos-style layouts.
+Reference SpatGRIS speaker setup XML files for common multichannel, Dolby
+Atmos-style, and Auro-3D layouts.
 
 These files are intended as geometry/reference assets. They are speaker setup
-XMLs, not `.spatgris` projects, audio files, render kernels, or Dolby Atmos
+XMLs, not `.spatgris` projects, audio files, render kernels, Dolby Atmos, or Auro-3D
 master files.
 
 ## What Is Here
@@ -72,11 +72,14 @@ LFE handling: generated layouts with `.1` channels include an LFE entry at patch
   https://professional.dolby.com/siteassets/tv/home/dolby-atmos/atmos-installation-guidelines-121318_r3.1.pdf
 - Dolby mix-room guidance:
   https://professionalsupport.dolby.com/s/article/How-to-Design-a-Dolby-Atmos-Mix-Room
+- Auro-3D Home Theater Setup Guidelines, Rev. 12, 2024 May 16:
+  https://www.auro-3d.com/wp-content/uploads/2024/05/Auro-3D-Home-Theater-Setup-Guidelines-v12-20240516.pdf
 - SpatGRIS source project:
   https://github.com/GRIS-UdeM/SpatGRIS
 
 Existing SpatGRIS ITU/BS templates were used as a local sanity check for channel
-families, LFE direct-out handling, and the `SPEAKER_N` XML format.
+families, LFE direct-out handling, Auro-3D layout geometry, and the `SPEAKER_N`
+XML format.
 
 ## Files
 
@@ -95,6 +98,12 @@ families, LFE direct-out handling, and the `SPEAKER_N` XML format.
 | 9.1.4 | 14 | `dolby-multichannel-and-other-speaker-layouts/9_1_4_spatgris_speaker_setup.xml` | Dolby 9.1.4 basis: 7.1.4 plus left/right wide speakers. |
 | 9.1.6 | 16 | `dolby-multichannel-and-other-speaker-layouts/9_1_6_spatgris_speaker_setup.xml` | Dolby 9.1.6 basis: 9.1.4 plus left/right top-middle overhead pair. |
 | Harmony Bloom 8ch | 8 | `dolby-multichannel-and-other-speaker-layouts/harmony_bloom_8ch_spatgris_speaker_setup.xml` | Music-production circular utility layout from the local workplan; not a Dolby room-speaker standard. |
+| Auro-3D 8.0 | 8 | `dolby-multichannel-and-other-speaker-layouts/auro_8_0_spatgris_speaker_setup.xml` | Auro-3D 8.0 (4.0+4H): two quadraphonic layers, lower layer at 0 degrees and height layer at +30 degrees. |
+| Auro-3D 9.1 | 10 | `dolby-multichannel-and-other-speaker-layouts/auro_9_1_spatgris_speaker_setup.xml` | Auro-3D 9.1 (5.1+4H): 5.1 lower layer plus height front and height surround pairs at +30 degrees. |
+| Auro-3D 10.1 | 11 | `dolby-multichannel-and-other-speaker-layouts/auro_10_1_spatgris_speaker_setup.xml` | Auro-3D 10.1 (5.1+4H+T): Auro 9.1 plus top Voice of God channel at +90 degrees. |
+| Auro-3D 11.1 (5.1+5H+T) | 12 | `dolby-multichannel-and-other-speaker-layouts/auro_11_1_5_1_5h_t_spatgris_speaker_setup.xml` | Auro-3D 11.1 (5.1+5H+T): Auro 10.1 plus height center at 0 degrees azimuth and +30 degrees elevation. |
+| Auro-3D 11.1 (7.1+4H) | 12 | `dolby-multichannel-and-other-speaker-layouts/auro_11_1_7_1_4h_spatgris_speaker_setup.xml` | Auro-3D 11.1 (7.1+4H): 7.1 lower layer with surrounds at +/-110 degrees, backs at +/-150 degrees, and four height speakers. |
+| Auro-3D 13.1 | 14 | `dolby-multichannel-and-other-speaker-layouts/auro_13_1_spatgris_speaker_setup.xml` | Auro-3D 13.1 (7.1+5H+T): 7.1 lower layer, height front/surround/center layer at +30 degrees, and top at +90 degrees. |
 
 ## Imported Source Layouts
 
@@ -112,6 +121,9 @@ See `sonic-sphere-speaker-layouts/README.md` for the import notes.
 ## Notes
 
 - `Binaural 2.0 Narrow` and `Harmony Bloom 8ch` are utility/music-production
-  layouts, not Dolby room-speaker standards.
+  layouts, not Dolby or Auro room-speaker standards.
+- Auro-3D layouts use the nominal positions from the Auro-3D Home Theater Setup
+  Guidelines: lower-layer fronts at +/-30 degrees, surrounds at +/-110 degrees,
+  backs at +/-150 degrees, height layer at +30 degrees, and top at +90 degrees.
 - The generated XML files include comments naming the logical channel at each
   patch number.

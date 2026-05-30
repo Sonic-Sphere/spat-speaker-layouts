@@ -120,6 +120,32 @@ def front_wide(start_patch: int) -> tuple[Speaker, Speaker]:
     )
 
 
+def auro_surround_7_1(start_patch: int = 5) -> tuple[Speaker, Speaker, Speaker, Speaker]:
+    return (
+        Speaker(start_patch, "Ls", -110.0, 0.0),
+        Speaker(start_patch + 1, "Rs", 110.0, 0.0),
+        Speaker(start_patch + 2, "Lb", -150.0, 0.0),
+        Speaker(start_patch + 3, "Rb", 150.0, 0.0),
+    )
+
+
+def auro_height_quad(start_patch: int) -> tuple[Speaker, Speaker, Speaker, Speaker]:
+    return (
+        Speaker(start_patch, "HL", -30.0, 30.0),
+        Speaker(start_patch + 1, "HR", 30.0, 30.0),
+        Speaker(start_patch + 2, "HLs", -110.0, 30.0),
+        Speaker(start_patch + 3, "HRs", 110.0, 30.0),
+    )
+
+
+def auro_top(start_patch: int) -> tuple[Speaker]:
+    return (Speaker(start_patch, "T", 0.0, 90.0, False, "Voice of God top channel"),)
+
+
+def auro_height_center(start_patch: int) -> tuple[Speaker]:
+    return (Speaker(start_patch, "HC", 0.0, 30.0),)
+
+
 LAYOUTS: tuple[Layout, ...] = (
     Layout(
         "mono_1_0",
@@ -205,6 +231,48 @@ LAYOUTS: tuple[Layout, ...] = (
         tuple(Speaker(i + 1, f"HB{i + 1}", az, 0.0) for i, az in enumerate((0, 45, 90, 135, 180, -135, -90, -45))),
         "Music-production circular utility layout from the local workplan; not a Dolby room-speaker standard.",
     ),
+    Layout(
+        "auro_8_0",
+        "Auro-3D 8.0",
+        (
+            Speaker(1, "L", -30.0, 0.0),
+            Speaker(2, "R", 30.0, 0.0),
+            Speaker(3, "Ls", -110.0, 0.0),
+            Speaker(4, "Rs", 110.0, 0.0),
+        )
+        + auro_height_quad(5),
+        "Auro-3D 8.0 (4.0+4H): two quadraphonic layers, lower layer at 0 degrees and height layer at +30 degrees.",
+    ),
+    Layout(
+        "auro_9_1",
+        "Auro-3D 9.1",
+        front_lrc() + surround_5_1() + auro_height_quad(7),
+        "Auro-3D 9.1 (5.1+4H): 5.1 lower layer plus height front and height surround pairs at +30 degrees.",
+    ),
+    Layout(
+        "auro_10_1",
+        "Auro-3D 10.1",
+        front_lrc() + surround_5_1() + auro_height_quad(7) + auro_top(11),
+        "Auro-3D 10.1 (5.1+4H+T): Auro 9.1 plus top Voice of God channel at +90 degrees.",
+    ),
+    Layout(
+        "auro_11_1_5_1_5h_t",
+        "Auro-3D 11.1 (5.1+5H+T)",
+        front_lrc() + surround_5_1() + auro_height_quad(7) + auro_top(11) + auro_height_center(12),
+        "Auro-3D 11.1 (5.1+5H+T): Auro 10.1 plus height center at 0 degrees azimuth and +30 degrees elevation.",
+    ),
+    Layout(
+        "auro_11_1_7_1_4h",
+        "Auro-3D 11.1 (7.1+4H)",
+        front_lrc() + auro_surround_7_1(5) + auro_height_quad(9),
+        "Auro-3D 11.1 (7.1+4H): 7.1 lower layer with surrounds at +/-110 degrees, backs at +/-150 degrees, and four height speakers.",
+    ),
+    Layout(
+        "auro_13_1",
+        "Auro-3D 13.1",
+        front_lrc() + auro_surround_7_1(5) + auro_height_quad(9) + auro_top(13) + auro_height_center(14),
+        "Auro-3D 13.1 (7.1+5H+T): 7.1 lower layer, height front/surround/center layer at +30 degrees, and top at +90 degrees.",
+    ),
 )
 
 
@@ -278,7 +346,7 @@ def write_xml(layout: Layout) -> Path:
 
 def write_geometry_csv() -> None:
     with GEOMETRY_CSV.open("w", newline="", encoding="UTF-8") as handle:
-        writer = csv.writer(handle)
+        writer = csv.writer(handle, lineterminator="\n")
         writer.writerow(
             [
                 "layout",
@@ -324,11 +392,11 @@ def write_readme(paths: list[Path]) -> None:
 
     content = f"""# Sonic Sphere SPAT Speaker Layouts
 
-Reference SpatGRIS speaker setup XML files for common multichannel and Dolby
-Atmos-style layouts.
+Reference SpatGRIS speaker setup XML files for common multichannel, Dolby
+Atmos-style, and Auro-3D layouts.
 
 These files are intended as geometry/reference assets. They are speaker setup
-XMLs, not `.spatgris` projects, audio files, render kernels, or Dolby Atmos
+XMLs, not `.spatgris` projects, audio files, render kernels, Dolby Atmos, or Auro-3D
 master files.
 
 ## What Is Here
@@ -396,11 +464,14 @@ LFE handling: generated layouts with `.1` channels include an LFE entry at patch
   https://professional.dolby.com/siteassets/tv/home/dolby-atmos/atmos-installation-guidelines-121318_r3.1.pdf
 - Dolby mix-room guidance:
   https://professionalsupport.dolby.com/s/article/How-to-Design-a-Dolby-Atmos-Mix-Room
+- Auro-3D Home Theater Setup Guidelines, Rev. 12, 2024 May 16:
+  https://www.auro-3d.com/wp-content/uploads/2024/05/Auro-3D-Home-Theater-Setup-Guidelines-v12-20240516.pdf
 - SpatGRIS source project:
   https://github.com/GRIS-UdeM/SpatGRIS
 
 Existing SpatGRIS ITU/BS templates were used as a local sanity check for channel
-families, LFE direct-out handling, and the `SPEAKER_N` XML format.
+families, LFE direct-out handling, Auro-3D layout geometry, and the `SPEAKER_N`
+XML format.
 
 ## Files
 
@@ -424,7 +495,10 @@ See `sonic-sphere-speaker-layouts/README.md` for the import notes.
 ## Notes
 
 - `Binaural 2.0 Narrow` and `Harmony Bloom 8ch` are utility/music-production
-  layouts, not Dolby room-speaker standards.
+  layouts, not Dolby or Auro room-speaker standards.
+- Auro-3D layouts use the nominal positions from the Auro-3D Home Theater Setup
+  Guidelines: lower-layer fronts at +/-30 degrees, surrounds at +/-110 degrees,
+  backs at +/-150 degrees, height layer at +30 degrees, and top at +90 degrees.
 - The generated XML files include comments naming the logical channel at each
   patch number.
 """
